@@ -1255,6 +1255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarP2
       objectReference: {fileID: 0}
+    - target: {fileID: 7218706814791324292, guid: 5cd2165cc9b8741bd97214f052caf61f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8091443419432598185, guid: 5cd2165cc9b8741bd97214f052caf61f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5777,6 +5781,10 @@ PrefabInstance:
     - target: {fileID: 7218706814791324292, guid: 5cd2165cc9b8741bd97214f052caf61f, type: 3}
       propertyPath: m_Name
       value: HealthBarP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7218706814791324292, guid: 5cd2165cc9b8741bd97214f052caf61f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8091443419432598185, guid: 5cd2165cc9b8741bd97214f052caf61f, type: 3}
       propertyPath: m_AnchorMax.x
