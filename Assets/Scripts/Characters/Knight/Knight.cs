@@ -5,7 +5,7 @@ using UnityEngine;
 public class Knight : MonoBehaviour
 {
     [SerializeField] float m_speed = 1.5f;
-    [SerializeField] float m_jumpForce = 3.5f;
+    [SerializeField] float m_jumpForce = 5.0f;
     [SerializeField] public bool isPlayerOne = false;
     private static int p1Health, p2Health;
     private SpriteRenderer m_sprite;

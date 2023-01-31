@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Logic
   - Health
+  - TwoWayPlatform
   layers:
   - Default
   - TransparentFX
@@ -52,11 +53,17 @@ TagManager:
   - name: BackgroundIsland
     uniqueID: 406859561
     locked: 0
-  - name: Player
-    uniqueID: 862236317
+  - name: 1BackgroundPlatform
+    uniqueID: 1289727843
+    locked: 0
+  - name: 2BackgroundPlatform
+    uniqueID: 585375081
     locked: 0
   - name: Scene
     uniqueID: 1306556303
+    locked: 0
+  - name: Player
+    uniqueID: 862236317
     locked: 0
   - name: SceneDecoration
     uniqueID: 1133797785
