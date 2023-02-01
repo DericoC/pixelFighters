@@ -102,12 +102,12 @@ public class Knight : MonoBehaviour
             //Attack
             else if (Input.GetKeyDown(KeyCode.Space) && isPlayerOne)
             {
-                m_animator.SetTrigger("Attack1");
+                m_animator.SetTrigger("Attack");
             }
 
             else if (Input.GetKeyDown(KeyCode.RightShift) && !isPlayerOne)
             {
-                m_animator.SetTrigger("Attack1");
+                m_animator.SetTrigger("Attack");
             }
 
             //Change between idle and combat idle

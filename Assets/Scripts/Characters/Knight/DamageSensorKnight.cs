@@ -26,19 +26,11 @@ public class DamageSensorKnight : MonoBehaviour
         }
     }
 
-    void damage(Collider2D collision, bool isPlayerOne)
+    void damage(Collider2D other, bool isPlayerOne)
     {
-        if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack1"))
+        if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             knight.damageTaken(10, isPlayerOne);
-        }
-        else if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
-        {
-            knight.damageTaken(4, isPlayerOne);
-        }
-        else if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Combat Idle"))
-        {
-            knight.damageTaken(2, isPlayerOne);
         }
     }
 }

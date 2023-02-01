@@ -26,19 +26,11 @@ public class DamageSensorBandit : MonoBehaviour
         }
     }
 
-    void damage(Collider2D collision, bool isPlayerOne)
+    void damage(Collider2D other, bool isPlayerOne)
     {
-        if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        if (other.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             bandit.damageTaken(10, isPlayerOne);
-        }
-        else if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Run"))
-        {
-            bandit.damageTaken(2, isPlayerOne);
-        }
-        else if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Combat Idle"))
-        {
-            bandit.damageTaken(4, isPlayerOne);
         }
     }
 }
