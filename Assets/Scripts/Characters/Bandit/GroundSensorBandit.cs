@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GroundSensorBandit : MonoBehaviour
 {
+    private bool isPlatform = false;
     private int m_ColCount = 0;
-
     private float m_DisableTimer;
 
     private void OnEnable()
@@ -22,6 +22,7 @@ public class GroundSensorBandit : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        isPlatform = other.CompareTag("Platform");
         m_ColCount++;
     }
 
@@ -38,5 +39,12 @@ public class GroundSensorBandit : MonoBehaviour
     public void Disable(float duration)
     {
         m_DisableTimer = duration;
+    }
+
+    //Getters / Setters
+    public bool IsPlatform
+    {
+        get { return isPlatform; }
+        set { isPlatform = value; }
     }
 }

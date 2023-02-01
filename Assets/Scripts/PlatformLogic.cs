@@ -4,38 +4,17 @@ using UnityEngine;
 
 public class PlatformLogic : MonoBehaviour
 {
-    private PlatformEffector2D effector;
-    public float waitTime;
+    private BoxCollider2D platformCollider;
 
-    // Start is called before the first frame update
     void Start()
     {
-        effector = GetComponent<PlatformEffector2D>();
+        platformCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator disableCollision(BoxCollider2D playerCollider)
     {
-        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            waitTime = 0.1f;
-        }
-
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            if (waitTime <= 0)
-            {
-                effector.rotationalOffset = 180f;
-                waitTime = 0.1f;
-            } else
-            {
-                waitTime -= Time.deltaTime;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            effector.rotationalOffset = 0;
-        }
+        Physics2D.IgnoreCollision(playerCollider, platformCollider);
+        yield return new WaitForSeconds(0.25f);
+        Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
     }
 }

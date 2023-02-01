@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class GroundSensorKnight : MonoBehaviour
 {
+    private bool isPlatform = false;
     private int m_ColCount = 0;
-
     private float m_DisableTimer;
 
     private void OnEnable()
@@ -22,6 +23,7 @@ public class GroundSensorKnight : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        isPlatform = other.CompareTag("Platform");
         m_ColCount++;
     }
 
@@ -38,5 +40,12 @@ public class GroundSensorKnight : MonoBehaviour
     public void Disable(float duration)
     {
         m_DisableTimer = duration;
+    }
+
+    //Getters / Setters
+    public bool IsPlatform
+    {
+        get { return isPlatform; }
+        set { isPlatform = value; }
     }
 }

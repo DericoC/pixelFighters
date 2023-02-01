@@ -11,16 +11,20 @@ public class Knight : MonoBehaviour
     private SpriteRenderer m_sprite;
     private Animator m_animator;
     private Rigidbody2D m_body2d;
+    private BoxCollider2D m_boxCollider;
     private GroundSensorKnight m_groundSensor;
     private Map1Logic logicScript;
-    private bool m_grounded, m_combatIdle, m_isDead, m_damageAni = false;
+    private PlatformLogic platformLogic;
+    private bool m_grounded, m_combatIdle, m_isDead, m_damageAni, doubleJump = false;
 
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_sprite = GetComponent<SpriteRenderer>();
+        m_boxCollider = GetComponent<BoxCollider2D>();
         logicScript = GameObject.FindGameObjectWithTag("Logic").GetComponent<Map1Logic>();
+        platformLogic = GameObject.Find("PlatformCollider").GetComponent<PlatformLogic>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<GroundSensorKnight>();
         p1Health = logicScript.MaxHealth;
         p2Health = logicScript.MaxHealth;
@@ -28,113 +32,131 @@ public class Knight : MonoBehaviour
 
     void Update()
     {
-        //Check if character just landed on the ground
-        if (!m_grounded && m_groundSensor.State())
+        if (!Map1Logic.gameEnded)
         {
-            m_grounded = true;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
+            //Check if character just landed on the ground
+            if (!m_grounded && m_groundSensor.State())
+            {
+                m_grounded = true;
+                doubleJump = false;
+                m_animator.SetBool("Grounded", m_grounded);
+            }
 
-        //Check if character just started falling
-        if (m_grounded && !m_groundSensor.State())
-        {
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-        }
+            //Check if character just started falling
+            if (m_grounded && !m_groundSensor.State())
+            {
+                m_grounded = false;
+                m_animator.SetBool("Grounded", m_grounded);
+            }
 
-        if (Input.GetKey("d") && isPlayerOne && !m_isDead)
-        {
-            moveRight();
-        }
-        else if (Input.GetKey("a") && isPlayerOne && !m_isDead)
-        {
-            moveLeft();
-        }
-        else if (Input.GetKey(KeyCode.RightArrow) && !isPlayerOne && !m_isDead)
-        {
-            moveRight();
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow) && !isPlayerOne && !m_isDead)
-        {
-            moveLeft();
-        }
+            if (Input.GetKey("d") && isPlayerOne && !m_isDead)
+            {
+                moveRight();
+            }
+            else if (Input.GetKey("a") && isPlayerOne && !m_isDead)
+            {
+                moveLeft();
+            }
+            else if (Input.GetKey(KeyCode.RightArrow) && !isPlayerOne && !m_isDead)
+            {
+                moveRight();
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow) && !isPlayerOne && !m_isDead)
+            {
+                moveLeft();
+            }
 
-        //Set AirSpeed in animator
-        m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
+            if ((Input.GetKey("s") && isPlayerOne && !m_isDead && m_groundSensor.IsPlatform) || (Input.GetKey(KeyCode.DownArrow) && !isPlayerOne && !m_isDead && m_groundSensor.IsPlatform))
+            {
+                StartCoroutine(platformLogic.disableCollision(m_boxCollider));
+            }
 
-        // -- Handle Animations --
-        //Death
-        if (m_isDead && Input.GetKeyDown("r") && isPlayerOne)
-        {
-            recover();
-        }
-        else if (m_isDead && Input.GetKeyDown(KeyCode.Return) && !isPlayerOne)
-        {
-            recover();
-        }
-        else if (p1Health <= 0 && isPlayerOne && !m_isDead)
-        {
-            death();
-        }
-        else if (p2Health <= 0 && !isPlayerOne && !m_isDead)
-        {
-            death();
-        }
-        //Hurt
-        else if (m_damageAni)
-        {
-            m_animator.SetTrigger("Hurt");
-            m_damageAni = false;
-        }
+            //Set AirSpeed in animator
+            m_animator.SetFloat("AirSpeedY", m_body2d.velocity.y);
 
-        //Attack
-        else if (Input.GetKeyDown(KeyCode.Space) && isPlayerOne)
-        {
-            m_animator.SetTrigger("Attack1");
-        }
+            // -- Handle Animations --
+            //Death
+            if (m_isDead && Input.GetKeyDown("r") && isPlayerOne)
+            {
+                recover();
+            }
+            else if (m_isDead && Input.GetKeyDown(KeyCode.Return) && !isPlayerOne)
+            {
+                recover();
+            }
+            else if (p1Health <= 0 && isPlayerOne && !m_isDead)
+            {
+                death();
+            }
+            else if (p2Health <= 0 && !isPlayerOne && !m_isDead)
+            {
+                death();
+            }
+            //Hurt
+            else if (m_damageAni)
+            {
+                m_animator.SetTrigger("Hurt");
+                m_damageAni = false;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.RightShift) && !isPlayerOne)
-        {
-            m_animator.SetTrigger("Attack1");
-        }
+            //Attack
+            else if (Input.GetKeyDown(KeyCode.Space) && isPlayerOne)
+            {
+                m_animator.SetTrigger("Attack1");
+            }
 
-        //Change between idle and combat idle
-        else if (Input.GetKeyDown("f") && isPlayerOne)
-        {
-            m_combatIdle = !m_combatIdle;
-        }
+            else if (Input.GetKeyDown(KeyCode.RightShift) && !isPlayerOne)
+            {
+                m_animator.SetTrigger("Attack1");
+            }
 
-        else if (Input.GetKeyDown(KeyCode.RightControl) && !isPlayerOne)
-        {
-            m_combatIdle = !m_combatIdle;
-        }
+            //Change between idle and combat idle
+            else if (Input.GetKeyDown("f") && isPlayerOne)
+            {
+                m_combatIdle = !m_combatIdle;
+            }
 
-        //Jump
-        else if (Input.GetKeyDown("w") && m_grounded && isPlayerOne && !m_isDead)
-        {
-            jump();
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && m_grounded && !isPlayerOne && !m_isDead)
-        {
-            jump();
-        }
+            else if (Input.GetKeyDown(KeyCode.RightControl) && !isPlayerOne)
+            {
+                m_combatIdle = !m_combatIdle;
+            }
 
-        //Run
-        else if (Mathf.Abs(m_body2d.velocity.x) > 0.6)
-        {
-            m_animator.SetInteger("AnimState", 2);
-        }
+            //Jump
+            else if (Input.GetKeyDown("w") && isPlayerOne && !m_isDead)
+            {
+                if (m_grounded || doubleJump)
+                {
+                    jump();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) && !isPlayerOne && !m_isDead)
+            {
+                if (m_grounded || doubleJump)
+                {
+                    jump();
+                }
+            }
 
-        //Combat Idle
-        else if (m_combatIdle)
-        {
-            m_animator.SetInteger("AnimState", 1);
-        }
+            //Run
+            else if (Mathf.Abs(m_body2d.velocity.x) > 0.6)
+            {
+                m_animator.SetInteger("AnimState", 2);
+            }
 
-        //Idle
-        else
-        {
-            m_animator.SetInteger("AnimState", 0);
+            //Combat Idle
+            else if (m_combatIdle)
+            {
+                m_animator.SetInteger("AnimState", 1);
+            }
+
+            //Idle
+            else
+            {
+                m_animator.SetInteger("AnimState", 0);
+            }
+
+            //Check if player fell of the map
+            fellOfMap();
         }
     }
 
@@ -145,6 +167,7 @@ public class Knight : MonoBehaviour
         m_animator.SetBool("Grounded", m_grounded);
         m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
         m_groundSensor.Disable(0.2f);
+        doubleJump = !doubleJump;
     }
 
     void moveRight()
@@ -229,6 +252,24 @@ public class Knight : MonoBehaviour
         else if (Map1Logic.p2Win1 && Map1Logic.p2Win2)
         {
             logicScript.map1End("PLAYER 2 WINS");
+        }
+    }
+
+    void fellOfMap()
+    {
+        if (!((Map1Logic.p1Win1 && Map1Logic.p1Win2) || (Map1Logic.p2Win1 && Map1Logic.p2Win2)))
+        {
+            if (m_body2d.position.y < -4.5f)
+            {
+                death();
+                recover();
+                Destroy(this);
+
+                if (isPlayerOne)
+                    logicScript.spawnPlayer1();
+                else
+                    logicScript.spawnPlayer2();
+            }
         }
     }
 }

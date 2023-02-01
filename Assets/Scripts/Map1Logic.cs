@@ -13,7 +13,7 @@ public class Map1Logic : MonoBehaviour
     public GameObject map1Winner;
     public GameObject map1GameOver;
     public int maxHealth = 100;
-    public static bool p1Win1, p1Win2, p2Win1, p2Win2 = false;
+    public static bool p1Win1, p1Win2, p2Win1, p2Win2, gameEnded = false;
     private HealthBar playerOneHealth;
     private HealthBar playerTwoHealth;
 
@@ -22,26 +22,30 @@ public class Map1Logic : MonoBehaviour
         spawnPlayers();
         map1Round1.SetActive(true);
         Destroy(map1Round1, 2.7f);
-        playerOneHealth = GameObject.Find("HealthBarP1").GetComponent<HealthBar>();
-        playerTwoHealth = GameObject.Find("HealthBarP2").GetComponent<HealthBar>();
-        playerOneHealth.setMaxHealth(maxHealth);
-        playerTwoHealth.setMaxHealth(maxHealth);
+        cleanVariables();
     }
 
     public void map1Round2Start()
     {
-        map1Round2.SetActive(true);
-        Destroy(map1Round2, 2.7f);
+        if (map1Round2 != null)
+        {
+            map1Round2.SetActive(true);
+            Destroy(map1Round2, 2.7f);
+        }
     }
 
     public void map1Round3Start()
     {
-        map1Round3.SetActive(true);
-        Destroy(map1Round3, 2.7f);
+        if (map1Round3 != null)
+        {
+            map1Round3.SetActive(true);
+            Destroy(map1Round3, 2.7f);
+        }
     }
 
     public void map1End(string winner)
     {
+        gameEnded = true;
         map1Winner.GetComponent<TextMeshProUGUI>().SetText(winner);
         map1GameOver.SetActive(true);
     }
@@ -64,7 +68,12 @@ public class Map1Logic : MonoBehaviour
 
     void spawnPlayers()
     {
-        //Player 1
+        spawnPlayer1();
+        spawnPlayer2();
+    }
+
+    public void spawnPlayer1()
+    {
         string p1Character = LogicScript.characterSelect[0].Remove(LogicScript.characterSelect[0].Length - 1, 1);
         GameObject p1Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + p1Character + ".prefab", typeof(GameObject));
         if (p1Character == "HeavyBandit" || p1Character == "LightBandit")
@@ -77,9 +86,24 @@ public class Map1Logic : MonoBehaviour
         }
         p1Obj.GetComponent<SpriteRenderer>().flipX = true;
         Instantiate(p1Obj, new Vector3(-1.825f, -0.938f, 0f), Quaternion.identity);
+    }
 
-        //Player 2
+    public void spawnPlayer2()
+    {
         Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1) + ".prefab", typeof(GameObject)), new Vector3(2.050f, -0.938f, 0f), Quaternion.identity);
+    }
+
+    void cleanVariables()
+    {
+        p1Win1 = false;
+        p1Win2 = false;
+        p2Win1 = false;
+        p2Win2 = false;
+        gameEnded = false;
+        playerOneHealth = GameObject.Find("HealthBarP1").GetComponent<HealthBar>();
+        playerTwoHealth = GameObject.Find("HealthBarP2").GetComponent<HealthBar>();
+        playerOneHealth.setMaxHealth(maxHealth);
+        playerTwoHealth.setMaxHealth(maxHealth);
     }
 
     // Getters / Setters
