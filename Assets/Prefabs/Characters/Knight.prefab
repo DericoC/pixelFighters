@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2217690450478267682}
   - component: {fileID: 2217690450478267692}
+  - component: {fileID: 2217690450478267693}
   - component: {fileID: 2217690450478267680}
   - component: {fileID: 2217690450478267681}
   - component: {fileID: 2217690450478267686}
-  - component: {fileID: 2217690450478267693}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Player
@@ -90,6 +90,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2217690450478267693
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2217690450478267687}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7fb3cd698bb894a258f44fa496442ebd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!61 &2217690450478267680
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -152,26 +172,6 @@ MonoBehaviour:
   m_speed: 1.5
   m_jumpForce: 3.5
   isPlayerOne: 0
---- !u!95 &2217690450478267693
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2217690450478267687}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7fb3cd698bb894a258f44fa496442ebd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2217690450944084652
 GameObject:
   m_ObjectHideFlags: 0
