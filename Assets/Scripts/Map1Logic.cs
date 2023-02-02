@@ -7,47 +7,47 @@ using UnityEditor;
 
 public class Map1Logic : MonoBehaviour
 {
-    public GameObject map1Round1;
-    public GameObject map1Round2;
-    public GameObject map1Round3;
-    public GameObject map1Winner;
-    public GameObject map1GameOver;
+    public GameObject mapRound1;
+    public GameObject mapRound2;
+    public GameObject mapRound3;
+    public GameObject mapWinner;
+    public GameObject mapGameOver;
     public int maxHealth = 100;
-    public static bool p1Win1, p1Win2, p2Win1, p2Win2, gameEnded = false;
+    private bool p1Win1, p1Win2, p2Win1, p2Win2, gameEnded = false;
     private HealthBar playerOneHealth;
     private HealthBar playerTwoHealth;
 
     void Start()
     {
         spawnPlayers();
-        map1Round1.SetActive(true);
-        Destroy(map1Round1, 2.7f);
+        mapRound1.SetActive(true);
+        Destroy(mapRound1, 2.7f);
         cleanVariables();
     }
 
-    public void map1Round2Start()
+    public void mapRound2Start()
     {
-        if (map1Round2 != null)
+        if (mapRound2 != null)
         {
-            map1Round2.SetActive(true);
-            Destroy(map1Round2, 2.7f);
+            mapRound2.SetActive(true);
+            Destroy(mapRound2, 2.7f);
         }
     }
 
-    public void map1Round3Start()
+    public void mapRound3Start()
     {
-        if (map1Round3 != null)
+        if (mapRound3 != null)
         {
-            map1Round3.SetActive(true);
-            Destroy(map1Round3, 2.7f);
+            mapRound3.SetActive(true);
+            Destroy(mapRound3, 2.7f);
         }
     }
 
-    public void map1End(string winner)
+    public void mapEnd(string winner)
     {
         gameEnded = true;
-        map1Winner.GetComponent<TextMeshProUGUI>().SetText(winner);
-        map1GameOver.SetActive(true);
+        mapWinner.GetComponent<TextMeshProUGUI>().SetText(winner);
+        mapGameOver.SetActive(true);
     }
 
     public void restartHealth()
@@ -84,7 +84,7 @@ public class Map1Logic : MonoBehaviour
         {
             p1Obj.GetComponent<Knight>().isPlayerOne = true;
         }
-        p1Obj.GetComponent<SpriteRenderer>().flipX = true;
+        p1Obj.transform.localScale = new Vector2(-Mathf.Abs(p1Obj.transform.localScale.x), p1Obj.transform.localScale.y);
         Instantiate(p1Obj, new Vector3(-1.825f, -0.938f, 0f), Quaternion.identity);
     }
 
@@ -124,5 +124,35 @@ public class Map1Logic : MonoBehaviour
         get { return maxHealth; }
         set { maxHealth = value; }
     }
-    
+
+    public bool P1Win1
+    {
+        get { return p1Win1; }
+        set { p1Win1 = value; }
+    }
+
+    public bool P1Win2
+    {
+        get { return p1Win2; }
+        set { p1Win2 = value; }
+    }
+
+    public bool P2Win1
+    {
+        get { return p2Win1; }
+        set { p2Win1 = value; }
+    }
+
+    public bool P2Win2
+    {
+        get { return p2Win2; }
+        set { p2Win2 = value; }
+    }
+
+    public bool GameEnded
+    {
+        get { return gameEnded; }
+        set { gameEnded = value; }
+    }
+
 }

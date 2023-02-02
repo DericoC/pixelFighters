@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 public class Bandit : MonoBehaviour
 {
-
     [SerializeField] float m_speed = 1.5f;
     [SerializeField] float m_jumpForce = 5.0f;
     [SerializeField] public bool isPlayerOne = false;
@@ -31,7 +32,7 @@ public class Bandit : MonoBehaviour
 
     void Update()
     {
-        if (!Map1Logic.gameEnded)
+        if (!logicScript.GameEnded)
         {
             //Check if character just landed on the ground
             if (!m_grounded && m_groundSensor.State())
@@ -173,13 +174,13 @@ public class Bandit : MonoBehaviour
 
     void moveRight()
     {
-        m_sprite.flipX = true;
+        transform.localScale = new Vector2(-Mathf.Abs(transform.localScale.x), transform.localScale.y);
         m_body2d.velocity = m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") ? new Vector2(m_speed / 4.5f, m_body2d.velocity.y) : new Vector2(m_speed, m_body2d.velocity.y);
     }
 
     void moveLeft()
     {
-        m_sprite.flipX = false;
+        transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
         m_body2d.velocity = m_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") ? new Vector2(-(m_speed / 4.5f), m_body2d.velocity.y) : new Vector2(-m_speed, m_body2d.velocity.y);
     }
 
@@ -194,20 +195,20 @@ public class Bandit : MonoBehaviour
 
         if (isPlayerOne)
         {
-            Map1Logic.p2Win1 = true;
+            logicScript.P2Win1 = true;
         }
         else if (!isPlayerOne)
         {
-            Map1Logic.p1Win1 = true;
+            logicScript.P1Win1 = true;
         }
 
-        if (Map1Logic.p1Win1 && Map1Logic.p2Win1)
+        if (logicScript.P1Win1 && logicScript.P2Win1)
         {
-            logicScript.map1Round3Start();
+            logicScript.mapRound3Start();
         }
         else
         {
-            logicScript.map1Round2Start();
+            logicScript.mapRound2Start();
         }
     }
 
@@ -233,31 +234,31 @@ public class Bandit : MonoBehaviour
 
         if (isPlayerOne) //Player2 Wins
         {
-            if (Map1Logic.p2Win1)
+            if (logicScript.P2Win1)
             {
-                Map1Logic.p2Win2 = true;
+                logicScript.P2Win2 = true;
             }
         }
         else if (!isPlayerOne) //Player1 Wins
         {
-            if (Map1Logic.p1Win1)
+            if (logicScript.P1Win1)
             {
-                Map1Logic.p1Win2 = true;
+                logicScript.P1Win2 = true;
             }
         }
-        if (Map1Logic.p1Win1 && Map1Logic.p1Win2)
+        if (logicScript.P1Win1 && logicScript.P1Win2)
         {
-            logicScript.map1End("PLAYER 1 WINS");
+            logicScript.mapEnd("PLAYER 1 WINS");
         }
-        else if (Map1Logic.p2Win1 && Map1Logic.p2Win2)
+        else if (logicScript.P2Win1 && logicScript.P2Win2)
         {
-            logicScript.map1End("PLAYER 2 WINS");
+            logicScript.mapEnd("PLAYER 2 WINS");
         }
     }
 
     void fellOfMap()
     {
-        if (!((Map1Logic.p1Win1 && Map1Logic.p1Win2) || (Map1Logic.p2Win1 && Map1Logic.p2Win2)))
+        if (!((logicScript.P1Win1 && logicScript.P1Win2) || (logicScript.P2Win1 && logicScript.P2Win2)))
         {
             if (m_body2d.position.y < -4.5f)
             {
