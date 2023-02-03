@@ -76,21 +76,26 @@ public class Map1Logic : MonoBehaviour
     {
         string p1Character = LogicScript.characterSelect[0].Remove(LogicScript.characterSelect[0].Length - 1, 1);
         GameObject p1Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + p1Character + ".prefab", typeof(GameObject));
+        GameObject playerInstance = p1Obj;
         if (p1Character == "HeavyBandit" || p1Character == "LightBandit")
         {
-            p1Obj.GetComponent<Bandit>().isPlayerOne = true;
+            playerInstance.GetComponent<Bandit>().isPlayerOne = true;
         }
         else if (p1Character == "Knight")
         {
-            p1Obj.GetComponent<Knight>().isPlayerOne = true;
+            playerInstance.GetComponent<Knight>().isPlayerOne = true;
         }
-        p1Obj.transform.localScale = new Vector2(-Mathf.Abs(p1Obj.transform.localScale.x), p1Obj.transform.localScale.y);
-        Instantiate(p1Obj, new Vector3(-1.825f, -0.938f, 0f), Quaternion.identity);
+        playerInstance.transform.localScale = new Vector2(-Mathf.Abs(playerInstance.transform.localScale.x), playerInstance.transform.localScale.y);
+        Instantiate(playerInstance, new Vector3(-1.825f, -0.938f, 0f), Quaternion.identity);
+        p1Obj = null;
     }
 
     public void spawnPlayer2()
     {
-        Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1) + ".prefab", typeof(GameObject)), new Vector3(2.050f, -0.938f, 0f), Quaternion.identity);
+        GameObject p2Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1) + ".prefab", typeof(GameObject));
+        GameObject playerInstance = p2Obj;
+        Instantiate(playerInstance, new Vector3(2.050f, -0.938f, 0f), Quaternion.identity);
+        p2Obj = null;
     }
 
     void cleanVariables()
