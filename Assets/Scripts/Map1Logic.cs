@@ -7,12 +7,12 @@ using UnityEditor;
 
 public class Map1Logic : MonoBehaviour
 {
-    public GameObject mapRound1;
-    public GameObject mapRound2;
-    public GameObject mapRound3;
-    public GameObject mapWinner;
-    public GameObject mapGameOver;
-    public int maxHealth = 100;
+    [SerializeField] GameObject mapRound1;
+    [SerializeField] GameObject mapRound2;
+    [SerializeField] GameObject mapRound3;
+    [SerializeField] GameObject mapWinner;
+    [SerializeField] GameObject mapGameOver;
+    [SerializeField] int maxHealth = 100;
     private bool p1Win1, p1Win2, p2Win1, p2Win2, gameEnded = false;
     private HealthBar playerOneHealth;
     private HealthBar playerTwoHealth;

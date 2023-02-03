@@ -6616,11 +6616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14330e2636bf84d34ab372736193ed7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map1Round1: {fileID: 244292156}
-  map1Round2: {fileID: 349393112}
-  map1Round3: {fileID: 49468554}
-  map1Winner: {fileID: 230309071}
-  map1GameOver: {fileID: 1919265539}
+  mapRound1: {fileID: 244292156}
+  mapRound2: {fileID: 349393112}
+  mapRound3: {fileID: 49468554}
+  mapWinner: {fileID: 230309071}
+  mapGameOver: {fileID: 1919265539}
   maxHealth: 100
 --- !u!4 &1492566646
 Transform:
