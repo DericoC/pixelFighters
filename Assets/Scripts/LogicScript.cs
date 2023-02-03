@@ -70,4 +70,9 @@ public class LogicScript : MonoBehaviour
         SceneManager.LoadScene("Map1");
         
     }
+
+    public void goToMap2()
+    {
+        SceneManager.LoadScene("Map2");
+    }
 }
