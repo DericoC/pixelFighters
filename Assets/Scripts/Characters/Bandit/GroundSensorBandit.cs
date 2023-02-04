@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundSensorBandit : MonoBehaviour
 {
-    private bool isPlatform = false;
+    [SerializeField] private bool isPlatform = false;
     private int colCount = 0;
     private float disableTimer;
 
