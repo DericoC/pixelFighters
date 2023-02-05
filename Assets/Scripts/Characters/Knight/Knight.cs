@@ -83,7 +83,6 @@ public class Knight : MonoBehaviour
             }
             else if (logicScript.PlayerTwoHealth.getHealth() <= 0 && !isPlayerOne && !isDead)
             {
-                Debug.Log("Entro");
                 death();
             }
             //Hurt
