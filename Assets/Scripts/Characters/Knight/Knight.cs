@@ -8,7 +8,6 @@ public class Knight : MonoBehaviour
     [SerializeField] float speed = 1.5f;
     [SerializeField] float jumpForce = 5.0f;
     [SerializeField] public bool isPlayerOne = false;
-    private static int playerOneHealth, playerTwoHealth;
     private SpriteRenderer sprite;
     private Animator animator;
     private Rigidbody2D body2d;
@@ -26,8 +25,8 @@ public class Knight : MonoBehaviour
         logicScript = GameObject.FindGameObjectWithTag("Logic").GetComponent<MapLogic>();
         platformLogic = GameObject.Find("PlatformCollider").GetComponent<PlatformLogic>();
         groundSensor = transform.Find("GroundSensor").GetComponent<GroundSensorKnight>();
-        playerOneHealth = logicScript.MaxHealth;
-        playerTwoHealth = logicScript.MaxHealth;
+        logicScript.PlayerOneHealth.setHealth(logicScript.MaxHealth);
+        logicScript.PlayerTwoHealth.setHealth(logicScript.MaxHealth);
     }
     void Update()
     {
@@ -78,12 +77,13 @@ public class Knight : MonoBehaviour
             {
                 recover();
             }
-            else if (playerOneHealth <= 0 && isPlayerOne)
+            else if (logicScript.PlayerOneHealth.getHealth() <= 0 && isPlayerOne && !isDead)
             {
                 death();
             }
-            else if (playerTwoHealth <= 0 && !isPlayerOne)
+            else if (logicScript.PlayerTwoHealth.getHealth() <= 0 && !isPlayerOne && !isDead)
             {
+                Debug.Log("Entro");
                 death();
             }
             //Hurt
@@ -165,10 +165,10 @@ public class Knight : MonoBehaviour
     }
     void recover()
     {
-        animator.SetTrigger("Recover");
         isDead = false;
-        playerOneHealth = logicScript.MaxHealth;
-        playerTwoHealth = logicScript.MaxHealth;
+        animator.SetTrigger("Recover");
+        logicScript.PlayerOneHealth.setHealth(logicScript.MaxHealth);
+        logicScript.PlayerTwoHealth.setHealth(logicScript.MaxHealth);
         logicScript.restartHealth();
         damageAni = false;
         if (isPlayerOne)
@@ -192,13 +192,13 @@ public class Knight : MonoBehaviour
     {
         if (isPlayerOne)
         {
-            playerOneHealth -= amount;
-            logicScript.PlayerOneHealth.setHealth(playerOneHealth);
+            int damageTaken = logicScript.PlayerOneHealth.getHealth() - amount;
+            logicScript.PlayerOneHealth.setHealth(damageTaken);
         }
         else
         {
-            playerTwoHealth -= amount;
-            logicScript.PlayerTwoHealth.setHealth(playerTwoHealth);
+            int damageTaken = logicScript.PlayerTwoHealth.getHealth() - amount;
+            logicScript.PlayerTwoHealth.setHealth(damageTaken);
         }
         damageAni = true;
     }

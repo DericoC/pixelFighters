@@ -77,6 +77,7 @@ public class MapLogic : MonoBehaviour
         string p1Character = LogicScript.characterSelect[0].Remove(LogicScript.characterSelect[0].Length - 1, 1);
         GameObject p1Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + p1Character + ".prefab", typeof(GameObject));
         GameObject playerInstance = p1Obj;
+        p1Obj = null;
         if (p1Character == "HeavyBandit" || p1Character == "LightBandit")
         {
             playerInstance.GetComponent<Bandit>().isPlayerOne = true;
@@ -87,15 +88,14 @@ public class MapLogic : MonoBehaviour
         }
         playerInstance.transform.localScale = new Vector2(-Mathf.Abs(playerInstance.transform.localScale.x), playerInstance.transform.localScale.y);
         Instantiate(playerInstance, new Vector3(-1.825f, -0.938f, 0f), Quaternion.identity);
-        p1Obj = null;
     }
 
     public void spawnPlayer2()
     {
         GameObject p2Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1) + ".prefab", typeof(GameObject));
         GameObject playerInstance = p2Obj;
-        Instantiate(playerInstance, new Vector3(2.050f, -0.938f, 0f), Quaternion.identity);
         p2Obj = null;
+        Instantiate(playerInstance, new Vector3(2.050f, -0.938f, 0f), Quaternion.identity);
     }
 
     void cleanVariables()

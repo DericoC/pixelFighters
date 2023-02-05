@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   jumpForce: 3.5
-  isPlayerOne: 1
+  isPlayerOne: 0
 --- !u!1 &8568148959607691359
 GameObject:
   m_ObjectHideFlags: 0

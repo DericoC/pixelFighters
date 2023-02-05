@@ -17,4 +17,9 @@ public class HealthBar : MonoBehaviour
     {
         slider.value = value;
     }
+
+    public int getHealth()
+    {
+        return (int) slider.value;
+    }
 }

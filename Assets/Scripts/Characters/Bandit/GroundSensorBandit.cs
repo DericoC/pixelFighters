@@ -22,7 +22,10 @@ public class GroundSensorBandit : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        isPlatform = other.CompareTag("Platform");
+        if (!other.CompareTag("Player"))
+        {
+            isPlatform = other.CompareTag("Platform");
+        }
         colCount++;
     }
 
