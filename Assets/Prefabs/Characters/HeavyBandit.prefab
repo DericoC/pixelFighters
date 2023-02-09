@@ -196,7 +196,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04579188, y: 0.6241408}
+  m_Offset: {x: 0, y: 0.6241408}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -246,6 +246,8 @@ MonoBehaviour:
   jumpForce: 3.5
   swordAttack: {fileID: 8300000, guid: 80502e18f68bb734b9dded7bb8d2e750, type: 3}
   swordAttackEnemy: {fileID: 8300000, guid: 2829a5212f9da134e88443a1f91d0e48, type: 3}
+  swordAttackTwo: {fileID: 8300000, guid: 2aa0cff46255643cf9afb7c4f0ade93d, type: 3}
+  swordAttackEnemyTwo: {fileID: 8300000, guid: c25e9dcf134d64726bc59f74f341bc9d, type: 3}
   isPlayerOne: 0
 --- !u!82 &-1383737014403461849
 AudioSource:

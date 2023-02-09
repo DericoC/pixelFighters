@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2217690450478267687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.819, y: -0.972, z: 11.496593}
-  m_LocalScale: {x: -0.32, y: 0.32, z: 0}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2217690450944084655}
@@ -172,16 +172,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   jumpForce: 3.5
-  audioSource: {fileID: 0}
   swordAttack: {fileID: 8300000, guid: 80502e18f68bb734b9dded7bb8d2e750, type: 3}
   swordAttackEnemy: {fileID: 8300000, guid: 2829a5212f9da134e88443a1f91d0e48, type: 3}
-  isPlayerOne: 1
-  grounded: 0
-  combatIdle: 0
-  isDead: 0
-  damageAni: 0
-  doubleJump: 0
-  attackingPlayer: 0
+  swordAttackTwo: {fileID: 8300000, guid: c25e9dcf134d64726bc59f74f341bc9d, type: 3}
+  swordAttackEnemyTwo: {fileID: 8300000, guid: 2aa0cff46255643cf9afb7c4f0ade93d, type: 3}
+  isPlayerOne: 0
 --- !u!82 &4652715328196481633
 AudioSource:
   m_ObjectHideFlags: 0

@@ -7,13 +7,14 @@ public class Bandit : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float speed = 1.5f;
-    [SerializeField] float jumpForce = 5.0f;
+    [SerializeField] float jumpForce = 3.5f;
 
     [Header("Audio")]
     [SerializeField] AudioClip swordAttack;
     [SerializeField] AudioClip swordAttackEnemy;
+    [SerializeField] AudioClip swordAttackTwo;
+    [SerializeField] AudioClip swordAttackEnemyTwo;
     private AudioSource audioSource;
-
     [SerializeField] public bool isPlayerOne = false;
     private SpriteRenderer sprite;
     private Animator animator;
@@ -22,7 +23,7 @@ public class Bandit : MonoBehaviour
     private BoxCollider2D boxCollider;
     private MapLogic logicScript;
     private PlatformLogic platformLogic;
-    private bool grounded, combatIdle, isDead, damageAni, doubleJump, attackingPlayer = false;
+    private bool grounded, combatIdle, isDead, damageAni, doubleJump = false;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -103,26 +104,12 @@ public class Bandit : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space) && isPlayerOne)
             {
                 animator.SetTrigger("Attack");
-                if (!attackingPlayer)
-                {
-                    audioSource.PlayOneShot(swordAttack, 1.0f);
-                }
-                else if (attackingPlayer)
-                {
-                    audioSource.PlayOneShot(swordAttackEnemy, 1.0f);
-                }
+                Invoke("attack", 0.19f);
             }
             else if (Input.GetKeyDown(KeyCode.RightShift) && !isPlayerOne)
             {
                 animator.SetTrigger("Attack");
-                if (!attackingPlayer)
-                {
-                    audioSource.PlayOneShot(swordAttack, 1.0f);
-                }
-                else if (attackingPlayer)
-                {
-                    audioSource.PlayOneShot(swordAttackEnemy, 1.0f);
-                }
+                Invoke("attack", 0.19f);
             }
             //Change between idle and combat idle
             else if (Input.GetKeyDown("f") && isPlayerOne)
@@ -213,6 +200,9 @@ public class Bandit : MonoBehaviour
     }
     public void damageTaken(int amount, bool isPlayerOne)
     {
+        audioSource.Stop();
+        audioSource.PlayOneShot(isPlayerOne ? swordAttackEnemy : swordAttackEnemyTwo, 1.0f);
+
         if (isPlayerOne)
         {
             int damageTaken = logicScript.PlayerOneHealth.getHealth() - amount;
@@ -269,19 +259,8 @@ public class Bandit : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void attack()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            attackingPlayer = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            attackingPlayer = true;
-        }
+        audioSource.PlayOneShot(isPlayerOne ? swordAttack : swordAttackTwo, 1.0f);
     }
 }

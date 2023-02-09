@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using UnityEngine.TextCore.Text;
 
 public class MapLogic : MonoBehaviour
 {
@@ -75,34 +76,58 @@ public class MapLogic : MonoBehaviour
     public void spawnPlayer1()
     {
         string p1Character = LogicScript.characterSelect[0].Remove(LogicScript.characterSelect[0].Length - 1, 1);
+        Vector3 position = new Vector3(0,0,0);
         GameObject p1Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + p1Character + ".prefab", typeof(GameObject));
         GameObject playerInstance = p1Obj;
         p1Obj = null;
+
         switch (p1Character)
         {
             case "HeavyBandit":
                 playerInstance.GetComponent<Bandit>().isPlayerOne = true;
+                position = new Vector3(-1.825f, -0.938f, 0f);
                 break;
             case "LightBandit":
                 playerInstance.GetComponent<Bandit>().isPlayerOne = true;
+                position = new Vector3(-1.825f, -0.938f, 0f);
                 break;
             case "Knight":
                 playerInstance.GetComponent<Knight>().isPlayerOne = true;
+                position = new Vector3(-1.825f, -0.938f, 0f);
                 break;
             case "MedievalKing":
                 playerInstance.GetComponent<MedievalKing>().isPlayerOne = true;
+                position = new Vector3(-1.825f, -0.53f, 0f);
                 break;
         }
         playerInstance.transform.localScale = new Vector2(-Mathf.Abs(playerInstance.transform.localScale.x), playerInstance.transform.localScale.y);
-        Instantiate(playerInstance, new Vector3(-1.825f, -0.938f, 0f), Quaternion.identity);
+        Instantiate(playerInstance, position, Quaternion.identity);
     }
 
     public void spawnPlayer2()
     {
+        string p2Character = LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1);
         GameObject p2Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1) + ".prefab", typeof(GameObject));
+        Vector3 position = new Vector3(0, 0, 0);
         GameObject playerInstance = p2Obj;
         p2Obj = null;
-        Instantiate(playerInstance, new Vector3(2.050f, -0.938f, 0f), Quaternion.identity);
+
+        switch (p2Character)
+        {
+            case "HeavyBandit":
+                position = new Vector3(2.050f, -0.938f, 0f);
+                break;
+            case "LightBandit":
+                position = new Vector3(2.050f, -0.938f, 0f);
+                break;
+            case "Knight":
+                position = new Vector3(2.050f, -0.938f, 0f);
+                break;
+            case "MedievalKing":
+                position = new Vector3(2.050f, -0.53f, 0f);
+                break;
+        }
+        Instantiate(playerInstance, position, Quaternion.identity);
     }
 
     void cleanVariables()

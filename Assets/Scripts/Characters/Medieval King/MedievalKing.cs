@@ -5,8 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MedievalKing : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] float speed = 1.5f;
-    [SerializeField] float jumpForce = 5.0f;
+    [SerializeField] float jumpForce = 3.5f;
+
+    [Header("Audio")]
+    [SerializeField] AudioClip swordAttack;
+    [SerializeField] AudioClip swordAttackEnemy;
+    [SerializeField] AudioClip swordAttackTwo;
+    [SerializeField] AudioClip swordAttackEnemyTwo;
+    private AudioSource audioSource;
     [SerializeField] public bool isPlayerOne = false;
     private SpriteRenderer sprite;
     private Animator animator;
@@ -22,6 +30,7 @@ public class MedievalKing : MonoBehaviour
         body2d = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         logicScript = GameObject.FindGameObjectWithTag("Logic").GetComponent<MapLogic>();
         platformLogic = GameObject.Find("PlatformCollider").GetComponent<PlatformLogic>();
         groundSensor = transform.Find("GroundSensor").GetComponent<GroundSensorMedievalKing>();
@@ -77,11 +86,11 @@ public class MedievalKing : MonoBehaviour
             {
                 recover();
             }
-            else if (logicScript.PlayerOneHealth.getHealth() <= 0 && isPlayerOne)
+            else if (logicScript.PlayerOneHealth.getHealth() <= 0 && isPlayerOne && !isDead)
             {
                 death();
             }
-            else if (logicScript.PlayerTwoHealth.getHealth() <= 0 && !isPlayerOne)
+            else if (logicScript.PlayerTwoHealth.getHealth() <= 0 && !isPlayerOne && !isDead)
             {
                 death();
             }
@@ -95,10 +104,12 @@ public class MedievalKing : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space) && isPlayerOne)
             {
                 animator.SetTrigger("Attack");
+                Invoke("attack", 0.19f);
             }
             else if (Input.GetKeyDown(KeyCode.RightShift) && !isPlayerOne)
             {
                 animator.SetTrigger("Attack");
+                Invoke("attack", 0.19f);
             }
             //Change between idle and combat idle
             else if (Input.GetKeyDown("f") && isPlayerOne)
@@ -164,8 +175,8 @@ public class MedievalKing : MonoBehaviour
     }
     void recover()
     {
-        animator.SetTrigger("Recover");
         isDead = false;
+        animator.SetTrigger("Recover");
         logicScript.PlayerOneHealth.setHealth(logicScript.MaxHealth);
         logicScript.PlayerTwoHealth.setHealth(logicScript.MaxHealth);
         logicScript.restartHealth();
@@ -189,6 +200,9 @@ public class MedievalKing : MonoBehaviour
     }
     public void damageTaken(int amount, bool isPlayerOne)
     {
+        audioSource.Stop();
+        audioSource.PlayOneShot(isPlayerOne ? swordAttackEnemy : swordAttackEnemyTwo, 1.0f);
+
         if (isPlayerOne)
         {
             int damageTaken = logicScript.PlayerOneHealth.getHealth() - amount;
@@ -243,5 +257,10 @@ public class MedievalKing : MonoBehaviour
                     logicScript.spawnPlayer2();
             }
         }
+    }
+
+    void attack()
+    {
+        audioSource.PlayOneShot(isPlayerOne ? swordAttack : swordAttackTwo, 1.0f);
     }
 }
