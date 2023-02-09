@@ -78,13 +78,20 @@ public class MapLogic : MonoBehaviour
         GameObject p1Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + p1Character + ".prefab", typeof(GameObject));
         GameObject playerInstance = p1Obj;
         p1Obj = null;
-        if (p1Character == "HeavyBandit" || p1Character == "LightBandit")
+        switch (p1Character)
         {
-            playerInstance.GetComponent<Bandit>().isPlayerOne = true;
-        }
-        else if (p1Character == "Knight")
-        {
-            playerInstance.GetComponent<Knight>().isPlayerOne = true;
+            case "HeavyBandit":
+                playerInstance.GetComponent<Bandit>().isPlayerOne = true;
+                break;
+            case "LightBandit":
+                playerInstance.GetComponent<Bandit>().isPlayerOne = true;
+                break;
+            case "Knight":
+                playerInstance.GetComponent<Knight>().isPlayerOne = true;
+                break;
+            case "MedievalKing":
+                playerInstance.GetComponent<MedievalKing>().isPlayerOne = true;
+                break;
         }
         playerInstance.transform.localScale = new Vector2(-Mathf.Abs(playerInstance.transform.localScale.x), playerInstance.transform.localScale.y);
         Instantiate(playerInstance, new Vector3(-1.825f, -0.938f, 0f), Quaternion.identity);
