@@ -18,7 +18,7 @@ public class EvilWizard : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
     private Rigidbody2D body2d;
-    private GroundSensorBandit groundSensor;
+    private GroundSensorEvilWizard groundSensor;
     private BoxCollider2D boxCollider;
     private MapLogic logicScript;
     private PlatformLogic platformLogic;
@@ -32,7 +32,7 @@ public class EvilWizard : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         logicScript = GameObject.FindGameObjectWithTag("Logic").GetComponent<MapLogic>();
         platformLogic = GameObject.Find("PlatformCollider").GetComponent<PlatformLogic>();
-        groundSensor = transform.Find("GroundSensor").GetComponent<GroundSensorBandit>();
+        groundSensor = transform.Find("GroundSensor").GetComponent<GroundSensorEvilWizard>();
         logicScript.PlayerOneHealth.setHealth(logicScript.MaxHealth);
         logicScript.PlayerTwoHealth.setHealth(logicScript.MaxHealth);
     }
@@ -96,7 +96,7 @@ public class EvilWizard : MonoBehaviour
             //Hurt
             else if (damageAni)
             {
-                animator.SetTrigger("Hurt");
+                animator.SetTrigger("Recover");
                 damageAni = false;
             }
             //Attack
@@ -155,7 +155,7 @@ public class EvilWizard : MonoBehaviour
     }
     void jump()
     {
-        animator.SetTrigger("Jump");
+        animator.SetTrigger("Idle");
         grounded = false;
         animator.SetBool("Grounded", grounded);
         body2d.velocity = new Vector2(body2d.velocity.x, jumpForce);

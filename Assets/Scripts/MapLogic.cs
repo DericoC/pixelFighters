@@ -99,6 +99,10 @@ public class MapLogic : MonoBehaviour
                 playerInstance.GetComponent<MedievalKing>().isPlayerOne = true;
                 position = new Vector3(-1.825f, -0.53f, 0f);
                 break;
+            case "EvilWizard":
+                playerInstance.GetComponent<EvilWizard>().isPlayerOne = true;
+                position = new Vector3(-1.825f, -0.53f, 0f);
+                break;
         }
         playerInstance.transform.localScale = new Vector2(-Mathf.Abs(playerInstance.transform.localScale.x), playerInstance.transform.localScale.y);
         Instantiate(playerInstance, position, Quaternion.identity);
@@ -125,6 +129,9 @@ public class MapLogic : MonoBehaviour
                 break;
             case "MedievalKing":
                 position = new Vector3(2.050f, -0.53f, 0f);
+                break;
+            case "EvilWizard":
+                position = new Vector3(-1.825f, -0.53f, 0f);
                 break;
         }
         Instantiate(playerInstance, position, Quaternion.identity);

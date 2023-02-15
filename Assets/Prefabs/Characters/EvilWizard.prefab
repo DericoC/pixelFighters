@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 861524488588163545}
   - component: {fileID: 5820989130957667604}
   m_Layer: 0
-  m_Name: Evil Wizard
+  m_Name: EvilWizard
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
