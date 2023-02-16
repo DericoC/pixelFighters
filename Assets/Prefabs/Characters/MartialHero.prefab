@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6278071114053749285}
-  - component: {fileID: 8157284090381703025}
-  - component: {fileID: 3810583662736601573}
+  - component: {fileID: 926913617565634150}
+  - component: {fileID: 3255329915016067388}
   m_Layer: 0
   m_Name: DamageSensor
   m_TagString: Untagged
@@ -26,14 +26,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054150471873571906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.049, y: -0.21100006, z: 0}
+  m_LocalPosition: {x: 0.012, y: 0.007, z: 0}
   m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9187553921143810704}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &8157284090381703025
+--- !u!70 &926913617565634150
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,9 +47,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1.3}
+  m_Size: {x: 0.55, y: 1.1}
   m_Direction: 0
---- !u!114 &3810583662736601573
+--- !u!114 &3255329915016067388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2054150471873571906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c50b0c0f405b534582f73ee83d2e50a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f05969d123d6bf42984c68ce0a105bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4386267786288871018
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8504539949034477888}
   - component: {fileID: 6692794393589881935}
-  - component: {fileID: 6703393029735922112}
+  - component: {fileID: 3970509484865984658}
   m_Layer: 0
   m_Name: GroundSensor
   m_TagString: Player
@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4386267786288871018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.025, y: -0.523, z: 0}
+  m_LocalPosition: {x: 0.006, y: -0.238, z: 0}
   m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -120,7 +120,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.03}
   m_EdgeRadius: 0
---- !u!114 &6703393029735922112
+--- !u!114 &3970509484865984658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4386267786288871018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e366db5b6ea46e44e9dd9f4e5c598c65, type: 3}
+  m_Script: {fileID: 11500000, guid: c2590d29577b21945b77ae364b2f6969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPlatform: 0
@@ -146,10 +146,10 @@ GameObject:
   - component: {fileID: 6547918147786582312}
   - component: {fileID: -1973750917302908526}
   - component: {fileID: 5882634107176525810}
-  - component: {fileID: 7583605202992467520}
   - component: {fileID: -1099380231211671944}
+  - component: {fileID: 4643988488993040623}
   m_Layer: 0
-  m_Name: MedievalKing
+  m_Name: MartialHero
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 7943800719260370453}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9c85c612d200646a2ad75e6ca836b10b, type: 2}
+  m_Controller: {fileID: 22100000, guid: 37b36121211744fec88d49a5f1667f6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -233,7 +233,7 @@ SpriteRenderer:
   m_SortingLayerID: 862236317
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1868765687, guid: de590353581f54128ad6cba248ed9364, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 9882cfd74d5c2440ab798ba4c8cf4e2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -278,38 +278,19 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.045299932, y: -0.24283233}
+  m_Offset: {x: 0.012399815, y: -0.0212183}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.11}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.6, y: 1.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15424326, y: 0.5069588}
+  m_Size: {x: 0.16793276, y: 0.39652687}
   m_EdgeRadius: 0
---- !u!114 &7583605202992467520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7943800719260370453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e31a3fde3a6bb854ab5329d75775067e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.5
-  jumpForce: 3.5
-  swordAttack: {fileID: 8300000, guid: 80502e18f68bb734b9dded7bb8d2e750, type: 3}
-  swordAttackEnemy: {fileID: 8300000, guid: 2829a5212f9da134e88443a1f91d0e48, type: 3}
-  swordAttackTwo: {fileID: 8300000, guid: c25e9dcf134d64726bc59f74f341bc9d, type: 3}
-  swordAttackEnemyTwo: {fileID: 8300000, guid: 2aa0cff46255643cf9afb7c4f0ade93d, type: 3}
-  isPlayerOne: 1
 --- !u!82 &-1099380231211671944
 AudioSource:
   m_ObjectHideFlags: 0
@@ -406,3 +387,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4643988488993040623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943800719260370453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d623b122300da4644ab4f083743ef0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+  jumpForce: 3.5
+  swordAttack: {fileID: 8300000, guid: 80502e18f68bb734b9dded7bb8d2e750, type: 3}
+  swordAttackEnemy: {fileID: 8300000, guid: 2829a5212f9da134e88443a1f91d0e48, type: 3}
+  swordAttackTwo: {fileID: 8300000, guid: c25e9dcf134d64726bc59f74f341bc9d, type: 3}
+  swordAttackEnemyTwo: {fileID: 8300000, guid: 2aa0cff46255643cf9afb7c4f0ade93d, type: 3}
+  isPlayerOne: 0

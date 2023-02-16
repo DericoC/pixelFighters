@@ -1,8 +1,8 @@
-using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Knight : MonoBehaviour
+public class MartialHero : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] float speed = 1.5f;
@@ -18,12 +18,11 @@ public class Knight : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
     private Rigidbody2D body2d;
-    private GroundSensorKnight groundSensor;
+    private GroundSensorMartialHero groundSensor;
     private BoxCollider2D boxCollider;
     private MapLogic logicScript;
     private PlatformLogic platformLogic;
     private bool grounded, combatIdle, isDead, damageAni, doubleJump = false;
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -33,7 +32,7 @@ public class Knight : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         logicScript = GameObject.FindGameObjectWithTag("Logic").GetComponent<MapLogic>();
         platformLogic = GameObject.Find("PlatformCollider").GetComponent<PlatformLogic>();
-        groundSensor = transform.Find("GroundSensor").GetComponent<GroundSensorKnight>();
+        groundSensor = transform.Find("GroundSensor").GetComponent<GroundSensorMartialHero>();
         logicScript.PlayerOneHealth.setHealth(logicScript.MaxHealth);
         logicScript.PlayerTwoHealth.setHealth(logicScript.MaxHealth);
     }
