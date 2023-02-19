@@ -309,7 +309,7 @@ MonoBehaviour:
   swordAttackEnemy: {fileID: 8300000, guid: 2829a5212f9da134e88443a1f91d0e48, type: 3}
   swordAttackTwo: {fileID: 8300000, guid: c25e9dcf134d64726bc59f74f341bc9d, type: 3}
   swordAttackEnemyTwo: {fileID: 8300000, guid: 2aa0cff46255643cf9afb7c4f0ade93d, type: 3}
-  isPlayerOne: 1
+  isPlayerOne: 0
 --- !u!82 &-1099380231211671944
 AudioSource:
   m_ObjectHideFlags: 0
