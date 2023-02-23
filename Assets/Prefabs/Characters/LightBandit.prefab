@@ -282,8 +282,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4269114208525818}
-  - component: {fileID: 114926350374723154}
   - component: {fileID: 61368513597639598}
+  - component: {fileID: 4229922103222995185}
   m_Layer: 0
   m_Name: GroundSensor
   m_TagString: Player
@@ -306,19 +306,6 @@ Transform:
   m_Father: {fileID: 4805181885227780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114926350374723154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943394156383696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4beb47d3f52622a4db6bba0f8809ce39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlatform: 0
 --- !u!61 &61368513597639598
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -345,6 +332,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.03}
   m_EdgeRadius: 0
+--- !u!114 &4229922103222995185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943394156383696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcdc5612264140169cb3380a4e6ee90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlatform: 0
 --- !u!1 &7989779605365175927
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821713486755296389}
   - component: {fileID: 2643311365109578231}
-  - component: {fileID: 5883673554112558623}
+  - component: {fileID: 8084162514349968558}
   m_Layer: 0
   m_Name: DamageSensor
   m_TagString: Untagged
@@ -394,7 +394,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.061958212, y: -0.055515952}
   m_Size: {x: 0.56379735, y: 1.1638241}
   m_Direction: 0
---- !u!114 &5883673554112558623
+--- !u!114 &8084162514349968558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,6 +403,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7989779605365175927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df787d852862462091332fb3610fb41, type: 3}
+  m_Script: {fileID: 11500000, guid: c393a2446a9e84df2b2ede4f72201a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

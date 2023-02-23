@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6278071114053749285}
   - component: {fileID: 8157284090381703025}
-  - component: {fileID: 3810583662736601573}
+  - component: {fileID: 5548443561779059359}
   m_Layer: 0
   m_Name: DamageSensor
   m_TagString: Untagged
@@ -49,7 +49,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1.3}
   m_Direction: 0
---- !u!114 &3810583662736601573
+--- !u!114 &5548443561779059359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2054150471873571906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c50b0c0f405b534582f73ee83d2e50a, type: 3}
+  m_Script: {fileID: 11500000, guid: c393a2446a9e84df2b2ede4f72201a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4386267786288871018
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8504539949034477888}
   - component: {fileID: 6692794393589881935}
-  - component: {fileID: 6703393029735922112}
+  - component: {fileID: 2701054605037783986}
   m_Layer: 0
   m_Name: GroundSensor
   m_TagString: Player
@@ -120,7 +120,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.03}
   m_EdgeRadius: 0
---- !u!114 &6703393029735922112
+--- !u!114 &2701054605037783986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4386267786288871018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e366db5b6ea46e44e9dd9f4e5c598c65, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bcdc5612264140169cb3380a4e6ee90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPlatform: 0
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 862236317
-  m_SortingLayer: 7
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 1868765687, guid: de590353581f54128ad6cba248ed9364, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -310,6 +310,7 @@ MonoBehaviour:
   swordAttackTwo: {fileID: 8300000, guid: c25e9dcf134d64726bc59f74f341bc9d, type: 3}
   swordAttackEnemyTwo: {fileID: 8300000, guid: 2aa0cff46255643cf9afb7c4f0ade93d, type: 3}
   isPlayerOne: 0
+  damageMultiplier: 1.2
 --- !u!82 &-1099380231211671944
 AudioSource:
   m_ObjectHideFlags: 0

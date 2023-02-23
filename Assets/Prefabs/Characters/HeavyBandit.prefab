@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4532010589869964}
   - component: {fileID: 61751993304262736}
-  - component: {fileID: 3225065479934678675}
+  - component: {fileID: 3997184462610875658}
   m_Layer: 0
   m_Name: GroundSensor
   m_TagString: Player
@@ -59,7 +59,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.03}
   m_EdgeRadius: 0
---- !u!114 &3225065479934678675
+--- !u!114 &3997184462610875658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1287205349689962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4beb47d3f52622a4db6bba0f8809ce39, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bcdc5612264140169cb3380a4e6ee90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPlatform: 0
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 862236317
-  m_SortingLayer: 7
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 317b8365a4649ab459f6cb58ec8f9f18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -249,6 +249,7 @@ MonoBehaviour:
   swordAttackTwo: {fileID: 8300000, guid: 2aa0cff46255643cf9afb7c4f0ade93d, type: 3}
   swordAttackEnemyTwo: {fileID: 8300000, guid: c25e9dcf134d64726bc59f74f341bc9d, type: 3}
   isPlayerOne: 0
+  damageMultiplier: 2
 --- !u!82 &-1383737014403461849
 AudioSource:
   m_ObjectHideFlags: 0
@@ -355,7 +356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2874926615666277449}
   - component: {fileID: 6140005641318504960}
-  - component: {fileID: 5778147979894905039}
+  - component: {fileID: 8865198748006911880}
   m_Layer: 0
   m_Name: DamageSensor
   m_TagString: Untagged
@@ -394,7 +395,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.045481045, y: -0.041287858}
   m_Size: {x: 0.5309992, y: 1.1932541}
   m_Direction: 0
---- !u!114 &5778147979894905039
+--- !u!114 &8865198748006911880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,6 +404,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8568148959607691359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df787d852862462091332fb3610fb41, type: 3}
+  m_Script: {fileID: 11500000, guid: c393a2446a9e84df2b2ede4f72201a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

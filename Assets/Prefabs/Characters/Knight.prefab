@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2217690450944084655}
   - component: {fileID: 2217690450944084649}
-  - component: {fileID: 2217690450944084654}
+  - component: {fileID: 6171781298643710493}
   m_Layer: 0
   m_Name: GroundSensor
   m_TagString: Player
@@ -332,7 +332,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.03}
   m_EdgeRadius: 0
---- !u!114 &2217690450944084654
+--- !u!114 &6171781298643710493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2217690450944084652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7eea04d56614ef7b61e71a8fe92ed8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bcdc5612264140169cb3380a4e6ee90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isPlatform: 0
@@ -355,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2217690451869636939}
   - component: {fileID: 2217690451869636917}
-  - component: {fileID: 2217690451869636938}
+  - component: {fileID: 3961096442025881300}
   m_Layer: 0
   m_Name: DamageSensor
   m_TagString: Untagged
@@ -394,7 +394,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.015256368, y: -0.06899387}
   m_Size: {x: 0.65189785, y: 1.2486659}
   m_Direction: 0
---- !u!114 &2217690451869636938
+--- !u!114 &3961096442025881300
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,6 +403,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2217690451869636936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb050e095a964250996106c3edec299, type: 3}
+  m_Script: {fileID: 11500000, guid: c393a2446a9e84df2b2ede4f72201a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundSensorBandit : MonoBehaviour
+public class GroundSensorScript : MonoBehaviour
 {
     [SerializeField] private bool isPlatform = false;
     private int colCount = 0;

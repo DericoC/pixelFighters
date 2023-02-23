@@ -8,9 +8,12 @@ using TMPro;
 
 public class LogicScript : MonoBehaviour
 {
-    public GameObject welcome;
-    public GameObject chooseCharacter;
-    public GameObject chooseArena;
+    [SerializeField] GameObject welcome;
+    [SerializeField] GameObject chooseCharacter;
+    [SerializeField] GameObject characters;
+    [SerializeField] GameObject controlsMenu;
+    [SerializeField] GameObject controlsToggle;
+    [SerializeField] GameObject chooseArena;
     public static List<string> characterSelect;
 
     void Start()
@@ -31,7 +34,7 @@ public class LogicScript : MonoBehaviour
 
     public void characterSelected(int child)
     {
-        Toggle toggle = chooseCharacter.transform.GetChild(child).gameObject.GetComponent<Toggle>();
+        Toggle toggle = characters.transform.GetChild(child).gameObject.GetComponent<Toggle>();
         if (toggle.isOn)
         {
             characterSelect.Add(toggle.name);
@@ -48,6 +51,19 @@ public class LogicScript : MonoBehaviour
     {
         welcome.SetActive(false);
         chooseCharacter.SetActive(true);
+    }
+
+    public void showControlsMenu()
+    {
+        if (controlsToggle.GetComponent<Toggle>().isOn)
+        {
+            characters.SetActive(false);
+            controlsMenu.SetActive(true);
+        } else
+        {
+            controlsMenu.SetActive(false);
+            characters.SetActive(true);
+        }
     }
 
     public void showArena()

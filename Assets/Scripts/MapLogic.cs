@@ -13,8 +13,9 @@ public class MapLogic : MonoBehaviour
     [SerializeField] GameObject mapRound3;
     [SerializeField] GameObject mapWinner;
     [SerializeField] GameObject mapGameOver;
+    [SerializeField] GameObject pauseMenu;
     [SerializeField] int maxHealth = 100;
-    private bool playerOneWin1, playerOneWin2, playerTwoWin1, playerTwoWin2, gameEnded = false;
+    private bool playerOneWin1, playerOneWin2, playerTwoWin1, playerTwoWin2, pause, gameEnded = false;
     private HealthBar playerOneHealth;
     private HealthBar playerTwoHealth;
 
@@ -24,6 +25,39 @@ public class MapLogic : MonoBehaviour
         mapRound1.SetActive(true);
         Destroy(mapRound1, 2.7f);
         cleanVariables();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pause)
+            {
+                resume();
+            } else
+            {
+                mapPause();
+            }
+        }
+    }
+
+    public void mapPause()
+    {
+        Time.timeScale = 0;
+        pause = true;
+        playerOneHealth.gameObject.SetActive(false);
+        playerTwoHealth.gameObject.SetActive(false);
+        pauseMenu.SetActive(true);
+    }
+
+    public void resume()
+    {
+        pauseMenu.SetActive(false);
+        playerOneHealth.gameObject.SetActive(true);
+        playerTwoHealth.gameObject.SetActive(true);
+        pause = false;
+        Time.timeScale = 1;
+
     }
 
     public void mapRound2Start()
@@ -59,11 +93,13 @@ public class MapLogic : MonoBehaviour
 
     public void exitMap()
     {
+        resumeTimeScale();
         SceneManager.LoadScene("MainScene");
     }
 
     public void restartGame()
     {
+        resumeTimeScale();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -150,6 +186,14 @@ public class MapLogic : MonoBehaviour
         playerTwoHealth.setMaxHealth(maxHealth);
     }
 
+    void resumeTimeScale()
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+    }
+
     // Getters / Setters
     public HealthBar PlayerOneHealth
     {
@@ -191,6 +235,12 @@ public class MapLogic : MonoBehaviour
     {
         get { return playerTwoWin2; }
         set { playerTwoWin2 = value; }
+    }
+
+    public bool Pause
+    {
+        get { return pause; }
+        set { pause = value; }
     }
 
     public bool GameEnded
