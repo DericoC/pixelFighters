@@ -1,9 +1,9 @@
+using System.Runtime.Versioning;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 using UnityEngine.TextCore.Text;
 
 public class MapLogic : MonoBehaviour
@@ -113,7 +113,7 @@ public class MapLogic : MonoBehaviour
     {
         string p1Character = LogicScript.characterSelect[0].Remove(LogicScript.characterSelect[0].Length - 1, 1);
         Vector3 position = new Vector3(0,0,0);
-        GameObject p1Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + p1Character + ".prefab", typeof(GameObject));
+        GameObject p1Obj = Resources.Load("Prefabs/Characters/" + p1Character) as GameObject;
         GameObject playerInstance = p1Obj;
         p1Obj = null;
 
@@ -147,7 +147,7 @@ public class MapLogic : MonoBehaviour
     public void spawnPlayer2()
     {
         string p2Character = LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1);
-        GameObject p2Obj = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Characters/" + LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1) + ".prefab", typeof(GameObject));
+        GameObject p2Obj = Resources.Load("Prefabs/Characters/" + LogicScript.characterSelect[1].Remove(LogicScript.characterSelect[1].Length - 1, 1)) as GameObject;
         Vector3 position = new Vector3(0, 0, 0);
         GameObject playerInstance = p2Obj;
         p2Obj = null;

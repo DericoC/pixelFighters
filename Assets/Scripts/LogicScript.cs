@@ -76,8 +76,8 @@ public class LogicScript : MonoBehaviour
     {
         chooseArena.SetActive(false);
         chooseCharacter.SetActive(true);
-        chooseCharacter.transform.GetChild(int.Parse(characterSelect[1][characterSelect[1].Length - 1].ToString())).gameObject.GetComponent<Toggle>().isOn = false;
-        chooseCharacter.transform.GetChild(int.Parse(characterSelect[0][characterSelect[0].Length - 1].ToString())).gameObject.GetComponent<Toggle>().isOn = false;
+        chooseCharacter.transform.GetChild(0).GetChild(int.Parse(characterSelect[1][characterSelect[1].Length - 1].ToString())).gameObject.GetComponent<Toggle>().isOn = false;
+        chooseCharacter.transform.GetChild(0).GetChild(int.Parse(characterSelect[0][characterSelect[0].Length - 1].ToString())).gameObject.GetComponent<Toggle>().isOn = false;
         characterSelect.Clear();
     }
 
